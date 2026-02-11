@@ -1,0 +1,32 @@
+# ==============================================================================
+# Compilation settings for GNU Compilers (gfortran/gcc)
+# ==============================================================================
+
+fc = gfortran
+cc = gcc
+cxx = g++
+ll = ar
+
+# No special root directories needed for standard system install
+intelroot = 
+mklroot = 
+mpiroot = 
+
+base_inc = -I.
+
+# Linker flags
+# Removed MKL, added standard math and threading libs
+base_lflags = -lstdc++ -lm -fopenmp
+
+# Fortran flags
+# -cpp: Enable preprocessing
+# -ffree-line-length-none: Prevent line truncation
+# -fopenmp: Parallelization
+# -J$(moddir): Where to place .mod files
+base_fflags = -O3 -cpp -ffree-line-length-none -fopenmp -J$(moddir)
+
+# C flags
+base_cflags = -O3 -fopenmp -w
+
+# C++ flags
+base_cxxflags = -O3 -fopenmp -std=c++17 -w

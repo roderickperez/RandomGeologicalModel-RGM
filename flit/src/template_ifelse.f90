@@ -1,0 +1,109 @@
+!
+! © 2024. Triad National Security, LLC. All rights reserved.
+!
+! This program was produced under U.S. Government contract 89233218CNA000001
+! for Los Alamos National Laboratory (LANL), which is operated by
+! Triad National Security, LLC for the U.S. Department of Energy/National Nuclear
+! Security Administration. All rights in the program are reserved by
+! Triad National Security, LLC, and the U.S. Department of Energy/National
+! Nuclear Security Administration. The Government is granted for itself and
+! others acting on its behalf a nonexclusive, paid-up, irrevocable worldwide
+! license in this material to reproduce, prepare. derivative works,
+! distribute copies to the public, perform publicly and display publicly,
+! and to permit others to do so.
+!
+! Author:
+!    Kai Gao, kaigao@lanl.gov
+!
+
+
+#define CONCAT_HELPER(X, Y) X ## _ ## Y
+#define CONCAT(X, Y)        CONCAT_HELPER(X, Y)
+
+#define ifelse_         CONCAT(ifelse, T)
+#define ifelse_1d_      CONCAT(ifelse_1d, T)
+#define ifelse_2d_      CONCAT(ifelse_2d, T)
+#define ifelse_3d_      CONCAT(ifelse_3d, T)
+#define ifelse_4d_      CONCAT(ifelse_4d, T)
+
+pure function ifelse_(condition, a, b) result(c)
+
+    logical, intent(in) :: condition
+    TT, intent(in) :: a, b
+    TT :: c
+
+    if (condition) then
+        c = a
+    else
+        c = b
+    end if
+
+end function
+
+pure function ifelse_1d_(condition, a, b) result(c)
+
+    logical, intent(in) :: condition
+    TT, dimension(:), intent(in) :: a, b
+    TT, allocatable, dimension(:) :: c
+
+    if (condition) then
+        c = a
+    else
+        c = b
+    end if
+
+end function
+
+pure function ifelse_2d_(condition, a, b) result(c)
+
+    logical, intent(in) :: condition
+    TT, dimension(:, :), intent(in) :: a, b
+    TT, allocatable, dimension(:, :) :: c
+
+    if (condition) then
+        c = a
+    else
+        c = b
+    end if
+
+end function
+
+pure function ifelse_3d_(condition, a, b) result(c)
+
+    logical, intent(in) :: condition
+    TT, dimension(:, :, :), intent(in) :: a, b
+    TT, allocatable, dimension(:, :, :) :: c
+
+    if (condition) then
+        c = a
+    else
+        c = b
+    end if
+
+end function
+
+pure function ifelse_4d_(condition, a, b) result(c)
+
+    logical, intent(in) :: condition
+    TT, dimension(:, :, :, :), intent(in) :: a, b
+    TT, allocatable, dimension(:, :, :, :) :: c
+
+    if (condition) then
+        c = a
+    else
+        c = b
+    end if
+
+end function
+
+#undef T
+#undef TT
+
+#undef CONCAT_HELPER
+#undef CONCAT
+
+#undef ifelse_
+#undef ifelse_1d_
+#undef ifelse_2d_
+#undef ifelse_3d_
+#undef ifelse_4d_

@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+rgm_env/
+.DS_Store
+*.o
+*.mod
+*.exe
+.vscode/
+.idea/
