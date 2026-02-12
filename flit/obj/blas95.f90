@@ -36,10 +36,10 @@
 module blas95
     implicit none
     interface gemv
-        module procedure sgemv, dgemv
+        module procedure sgemv, dgemv, cgemv, zgemv
     end interface
     interface gemm
-        module procedure sgemm, dgemm
+        module procedure sgemm, dgemm, cgemm, zgemm
     end interface
 contains
     subroutine sgemv(a, x, y, alpha, beta, trans)
