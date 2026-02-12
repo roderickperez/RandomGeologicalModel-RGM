@@ -16,7 +16,8 @@ base_inc = -I.
 
 # Linker flags
 # Removed MKL, added standard math and threading libs
-base_lflags = -lstdc++ -lm -fopenmp
+# Manually pointing to WSL2 runtime libs if .so symlinks are missing
+base_lflags = -lstdc++ -lm -fopenmp /usr/lib/x86_64-linux-gnu/liblapack.so.3 /usr/lib/x86_64-linux-gnu/libblas.so.3
 
 # Fortran flags
 # -cpp: Enable preprocessing

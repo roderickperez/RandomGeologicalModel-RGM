@@ -83,6 +83,8 @@ object_libflit = \
 	$(object_filesystem) \
 	module_filedir.o \
 	module_io.o \
+	blas95.o \
+	lapack95.o \
 	module_linear_algebra.o \
 	module_taper.o \
 	$(object_spline) \

@@ -1,3 +1,38 @@
+/* Copyright (C) 1991-2024 Free Software Foundation, Inc.
+   This file is part of the GNU C Library.
+
+   The GNU C Library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Lesser General Public
+   License as published by the Free Software Foundation; either
+   version 2.1 of the License, or (at your option) any later version.
+
+   The GNU C Library is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   Lesser General Public License for more details.
+
+   You should have received a copy of the GNU Lesser General Public
+   License along with the GNU C Library; if not, see
+   <https://www.gnu.org/licenses/>.  */
+/* This header is separate from features.h so that the compiler can
+   include it implicitly at the start of every compilation.  It must
+   not itself include <features.h> or any other header that includes
+   <features.h> because the implicit include comes before any feature
+   test macros that may be defined in a source file before it first
+   explicitly includes a system header.  GCC knows the name of this
+   header in order to preinclude it.  */
+/* glibc's intent is to support the IEC 559 math functionality, real
+   and complex.  If the GCC (4.9 and later) predefined macros
+   specifying compiler intent are available, use them to determine
+   whether the overall intent is to support these features; otherwise,
+   presume an older compiler has intent to support these features and
+   define these macros by default.  */
+/* wchar_t uses Unicode 10.0.0.  Version 10.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2017, fifth edition, plus
+   the following additions from Amendment 1 to the fifth edition:
+   - 56 emoji characters
+   - 285 hentaigana
+   - 3 additional Zanabazar Square characters */
 module filesystem
     use, intrinsic:: iso_c_binding, only: C_BOOL
     use, intrinsic:: iso_fortran_env, only: stderr => error_unit, int64
@@ -29,8 +64,8 @@ module filesystem
     !! Physical filesystem maximum filename and path lengths are OS and config dependent.
     !! Notional limits:
     !! MacOS: 1024 from sys/syslimits.h PATH_MAX
-    !! Linux: 4096 from https:
-    !! Windows: 32767 from https:
+    !! Linux: 4096 from https://www.ibm.com/docs/en/spectrum-protect/8.1.13?topic=parameters-file-specification-syntax
+    !! Windows: 32767 from https://docs.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=cmd
     type :: path_t
         private
         character(:), allocatable :: path_str
@@ -95,7 +130,7 @@ module filesystem
             !! if b is not a subpath of a, returns "" empty string
             !!
             !! reference: C++ filesystem relative
-            !! https:
+            !! https://en.cppreference.com/w/cpp/filesystem/relative
             character(*), intent(in) :: a, b
             character(:), allocatable :: relative_to
         end function
@@ -148,7 +183,7 @@ module filesystem
         module function get_homedir()
     !! returns home directory, or empty string if not found
     !!
-    !! https:
+    !! https://en.wikipedia.org/wiki/Home_directory#Default_home_directory_per_operating_system
             character(:), allocatable :: get_homedir
         end function
         module function canonical(path, strict)
@@ -458,13 +493,13 @@ contains
 !! throw error if file does not exist
         character(*), intent(in) :: path
         if (is_file(path)) return
-        error stop 'filesystem:assert_is_file: file does not exist '
+        error stop 'filesystem:assert_is_file: file does not exist '//path
     end subroutine
     subroutine assert_is_dir(path)
 !! throw error if directory does not exist
         character(*), intent(in) :: path
         if (is_dir(path)) return
-        error stop 'filesystem:assert_is_dir: directory does not exist '
+        error stop 'filesystem:assert_is_dir: directory does not exist '//path
     end subroutine
     subroutine f_touch(self)
         class(path_t), intent(in) :: self
