@@ -18,7 +18,7 @@
 
 
 include "mkl_dfti.f90"
-!include "mkl_trig_transforms.f90"
+! include "mkl_trig_transforms.f90"
 
 module libflit_transform
 
@@ -37,7 +37,7 @@ module libflit_transform
     ! use iso_c_binding
 
 #include "fftw3.f"
-#include "fftw3_mkl.f"
+! #include "fftw3_mkl.f"
 
     private
 
@@ -3574,7 +3574,7 @@ contains
         do i = 2, n
             dx = pu(i) - (pu(i - 1) - angle_jump)
             if (abs(dx) > angle) then
-                angle_jump = angle_jump - sign(const_pi*2, dx)
+                angle_jump = angle_jump - sign(const_pi*2, real(dx, kind=kind(const_pi)))
             end if
             pu(i) = pu(i) + angle_jump
         end do
@@ -3597,7 +3597,7 @@ contains
         do i = 2, n
             dx = pu(i) - (pu(i - 1) - angle_jump)
             if (abs(dx) > angle) then
-                angle_jump = angle_jump - sign(const_pi*2, dx)
+                angle_jump = angle_jump - sign(const_pi*2, real(dx, kind=kind(const_pi)))
             end if
             pu(i) = pu(i) + angle_jump
         end do

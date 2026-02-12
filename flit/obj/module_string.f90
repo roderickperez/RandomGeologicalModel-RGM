@@ -161,7 +161,7 @@ contains
         if (present(format)) then
             numformat = format
         else
-            numformat = '(i)'
+            numformat = '(i0)'
         end if
         write (numstr, numformat) num
         allocate (character(len=len_trim(numstr)) :: str)
@@ -178,7 +178,7 @@ contains
         if (present(format)) then
             numformat = format
         else
-            numformat = '(i)'
+            numformat = '(i0)'
         end if
         write (numstr, numformat) num
         allocate (character(len=len_trim(numstr)) :: str)
@@ -195,7 +195,7 @@ contains
         if (present(format)) then
             numformat = format
         else
-            numformat = '(i)'
+            numformat = '(i0)'
         end if
         write (numstr, numformat) num
         allocate (character(len=len_trim(numstr)) :: str)

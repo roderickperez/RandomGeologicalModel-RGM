@@ -1,12 +1,14 @@
+import argparse
+import sys
+# Import RGM Core first to initialize GPU check before other libraries
+from rgm_core import RGMConfig, RGMGenerator
+
 from rich.console import Console
 from rich.panel import Panel
 from rich.text import Text
 from rich.prompt import Prompt, IntPrompt, Confirm, FloatPrompt
 from rich.progress import Progress, SpinnerColumn, TextColumn, BarColumn, TimeElapsedColumn
 import matplotlib.pyplot as plt
-from rgm_core import RGMConfig, RGMGenerator
-import argparse
-import sys
 
 def display_banner(console):
     banner_text = Text(r"""
@@ -31,8 +33,8 @@ def display_banner(console):
 def get_interactive_config(console):
     console.print("\n[bold cyan]--- Parameter Configuration ---[/bold cyan]")
     n1 = IntPrompt.ask("Depth (n1)", default=128)
-    n2 = IntPrompt.ask("Crossline (n2)", default=256)
-    n3 = IntPrompt.ask("Inline (n3)", default=256)
+    n2 = IntPrompt.ask("Crossline (n2)", default=128)
+    n3 = IntPrompt.ask("Inline (n3)", default=128)
     nl = IntPrompt.ask("Number of layers (nl)", default=25)
     n_faults = IntPrompt.ask("Number of faults", default=6)
     f0 = FloatPrompt.ask("Ricker Wavelet Frequency (Hz)", default=25.0)

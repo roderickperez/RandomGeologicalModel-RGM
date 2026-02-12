@@ -9,16 +9,10 @@ try:
     import cupy as cp
     import cupyx.scipy.ndimage
     import cupyx.scipy.signal
-    # Check if a device is actually available
-    try:
-        cp.cuda.Device(0).compute_capability
-        HAS_GPU = True
-    except cp.cuda.runtime.CUDARuntimeError:
-        HAS_GPU = False
-        print("Warning: CuPy installed but no GPU detected. Falling back to CPU.")
+    CUPY_AVAILABLE = True
 except ImportError:
     cp = None
-    HAS_GPU = False
+    CUPY_AVAILABLE = False
 
 @dataclass
 class RGMConfig:
@@ -44,17 +38,25 @@ class RGMConfig:
 class RGMGenerator:
     def __init__(self, config: RGMConfig, use_gpu: bool = True):
         self.cfg = config
+        self.device = "CPU"
+        self.xp = np
+        self.ndi = scipy.ndimage
+        self.sig = scipy.signal
+        
         # Backend Selector (CPU vs GPU)
-        if use_gpu and HAS_GPU:
-            self.xp = cp
-            self.ndi = cupyx.scipy.ndimage
-            self.sig = cupyx.scipy.signal
-            self.device = "GPU (NVIDIA A5000)"
-        else:
-            self.xp = np
-            self.ndi = scipy.ndimage
-            self.sig = scipy.signal
-            self.device = "CPU"
+        if use_gpu and CUPY_AVAILABLE:
+            try:
+                # Force initialization/check
+                dev = cp.cuda.Device(0)
+                dev.use()
+                dev.compute_capability
+                
+                self.xp = cp
+                self.ndi = cupyx.scipy.ndimage
+                self.sig = cupyx.scipy.signal
+                self.device = "GPU (NVIDIA)"
+            except cp.cuda.runtime.CUDARuntimeError as e:
+                print(f"Warning: CuPy installed but no GPU detected. Falling back to CPU. Error: {e}")
             
     def _generate_random_surface(self, shape, smooth_sigma=10):
         """Generates a smooth random surface (Eq 1 in paper)."""

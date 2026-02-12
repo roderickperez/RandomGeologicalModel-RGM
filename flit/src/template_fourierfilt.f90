@@ -81,12 +81,12 @@ function fourier_filter_1d_(f, a, nt, dt, method, alpha) result(w)
         if (a2 > a1) then
             call alloc_array(window, [f1, f2], &
                 source=TTT(taper_window(f2 - f1 + 1, [f2 - f1 + 1, 0], &
-                [window_method, ''], [window_alpha, 0.0])))
+                [character(len=24) :: window_method, ''], [window_alpha, 0.0])))
             w(f1:f2) = rescale(window, [a1, a2])
         else
             call alloc_array(window, [f1, f2], &
                 source=TTT(taper_window(f2 - f1 + 1, [0, f2 - f1 + 1], &
-                ['', window_method], [0.0, window_alpha])))
+                [character(len=24) :: '', window_method], [0.0, window_alpha])))
             w(f1:f2) = rescale(window, [a2, a1])
         end if
     end do

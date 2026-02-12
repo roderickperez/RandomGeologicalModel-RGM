@@ -1066,7 +1066,7 @@ subroutine plot_histogram_1d_(w, valmin, valmax, binsize, label)
         do j = 1, nint(hist(i, 4)/maxval(hist(:, 4))*len(bar))
             bar(j:j) = '*'
         end do
-        write (error_unit, '(x,es,x,a,x,es,x,x,a,x,i12,x,es)') &
+        write (error_unit, '(x,es12.5,x,a,x,es12.5,x,x,a,x,i12,x,es12.5)') &
             hist(i, 1), '~', hist(i, 2), bar, int(hist(i, 3), kind=8), hist(i, 4)
     end do
 
@@ -1123,7 +1123,7 @@ subroutine plot_histogram_2d_(w, valmin, valmax, binsize, label)
         do j = 1, nint(hist(i, 4)/maxval(hist(:, 4))*len(bar))
             bar(j:j) = '*'
         end do
-        write (error_unit, '(x,es,x,a,x,es,x,x,a,x,i12,x,es)') &
+        write (error_unit, '(x,es12.5,x,a,x,es12.5,x,x,a,x,i12,x,es12.5)') &
             hist(i, 1), '~', hist(i, 2), bar, int(hist(i, 3), kind=8), hist(i, 4)
     end do
 
@@ -1180,7 +1180,7 @@ subroutine plot_histogram_3d_(w, valmin, valmax, binsize, label)
         do j = 1, nint(hist(i, 4)/maxval(hist(:, 4))*len(bar))
             bar(j:j) = '*'
         end do
-        write (error_unit, '(x,es,x,a,x,es,x,x,a,x,i12,x,es)') &
+        write (error_unit, '(x,es12.5,x,a,x,es12.5,x,x,a,x,i12,x,es12.5)') &
             hist(i, 1), '~', hist(i, 2), bar, int(hist(i, 3), kind=8), hist(i, 4)
     end do
 

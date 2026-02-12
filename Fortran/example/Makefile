@@ -48,8 +48,8 @@ all: makedir \
 	$(exec5)
 
 # options
-flitdir = $(HOME)/src/flit
-rgmdir = $(HOME)/src/rgm
+flitdir = ../../flit
+rgmdir = ../../Fortran
 
 include $(flitdir)/src/Makefile.in
 inc = \

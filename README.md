@@ -40,3 +40,46 @@ The project is organized into several key directories:
 
 ---
 *Note: This repository is a curated version of the original RGM package for specific machine learning research purposes.*
+
+## Running the RGM CLI (Python)
+
+To launch the premium Python interface with interactive parameter selection:
+
+1. **Activate the Environment**:
+   ```bash
+   source rgm_env/bin/activate
+   ```
+
+2. **Run the CLI**:
+   ```bash
+   python Python/main.py
+   ```
+
+3. **Install Dependencies (if needed)**:
+    If running for the first time or if dependencies are missing:
+   ```bash
+   ./rgm_env/bin/pip install rich
+   ```
+
+## Generating 3D Cube Models
+
+You have two options for generating RGM cubes:
+
+### Option 1: Premium Python CLI (Recommended for Visualization)
+This runs the Python implementation with an interactive menu and generates a visualization (`rgm_output.png`).
+
+```bash
+# Activate the environment
+source rgm_env/bin/activate
+
+# Run the CLI
+python Python/main.py
+```
+
+### Option 2: High-Performance Fortran Binary
+This runs the compiled Fortran executable (`x_generate_mtl_3d`) which generates the raw 3D data files in the `dataset3_mtl` directory.
+
+```bash
+cd Fortran/example
+./bin/x_generate_mtl_3d
+```

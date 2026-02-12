@@ -1,0 +1,96 @@
+/* Copyright (C) 1991-2024 Free Software Foundation, Inc.
+   This file is part of the GNU C Library.
+
+   The GNU C Library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Lesser General Public
+   License as published by the Free Software Foundation; either
+   version 2.1 of the License, or (at your option) any later version.
+
+   The GNU C Library is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   Lesser General Public License for more details.
+
+   You should have received a copy of the GNU Lesser General Public
+   License along with the GNU C Library; if not, see
+   <https://www.gnu.org/licenses/>.  */
+/* This header is separate from features.h so that the compiler can
+   include it implicitly at the start of every compilation.  It must
+   not itself include <features.h> or any other header that includes
+   <features.h> because the implicit include comes before any feature
+   test macros that may be defined in a source file before it first
+   explicitly includes a system header.  GCC knows the name of this
+   header in order to preinclude it.  */
+/* glibc's intent is to support the IEC 559 math functionality, real
+   and complex.  If the GCC (4.9 and later) predefined macros
+   specifying compiler intent are available, use them to determine
+   whether the overall intent is to support these features; otherwise,
+   presume an older compiler has intent to support these features and
+   define these macros by default.  */
+/* wchar_t uses Unicode 10.0.0.  Version 10.0 of the Unicode Standard is
+   synchronized with ISO/IEC 10646:2017, fifth edition, plus
+   the following additions from Amendment 1 to the fifth edition:
+   - 56 emoji characters
+   - 285 hentaigana
+   - 3 additional Zanabazar Square characters */
+!
+! © 2024. Triad National Security, LLC. All rights reserved.
+!
+! This program was produced under U.S. Government contract 89233218CNA000001
+! for Los Alamos National Laboratory (LANL), which is operated by
+! Triad National Security, LLC for the U.S. Department of Energy/National Nuclear
+! Security Administration. All rights in the program are reserved by
+! Triad National Security, LLC, and the U.S. Department of Energy/National
+! Nuclear Security Administration. The Government is granted for itself and
+! others acting on its behalf a nonexclusive, paid-up, irrevocable worldwide
+! license in this material to reproduce, prepare. derivative works,
+! distribute copies to the public, perform publicly and display publicly,
+! and to permit others to do so.
+!
+! Author:
+! Kai Gao, kaigao@lanl.gov
+!
+module libflit
+    use libflit_error
+    use libflit_andffilt
+    use libflit_andffilt_mpi
+    use libflit_array
+    use libflit_array_operation
+    use libflit_array_extension
+    use libflit_balancefilt
+    use libflit_calculus
+    use libflit_clustering
+    use libflit_constants
+    use libflit_date_time
+    use libflit_dip
+    use libflit_domain_decomposition
+    use libflit_filedir
+    use libflit_fit
+    use libflit_fourierfilt
+    use libflit_geometry
+    use libflit_iirfilt
+    use libflit_gaussfilt
+    use libflit_heap
+    use libflit_interp
+    use libflit_io
+    use libflit_laplacefilt
+    use libflit_linear_algebra
+    use libflit_lowessfilt
+    use libflit_medianfilt
+    use libflit_meanfilt
+    use libflit_mpicomm
+    use libflit_mpicomm_group
+    use libflit_random
+    use libflit_random_extra
+    use libflit_readpar
+    use libflit_sort
+    use libflit_specialfunc
+    use libflit_spectrum
+    use libflit_statistics
+    use libflit_string
+    use libflit_taper
+    use libflit_transform
+    use libflit_tvfilt
+    use libflit_unique
+    use libflit_utility
+end module libflit

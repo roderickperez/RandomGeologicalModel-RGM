@@ -290,7 +290,7 @@ module libflit_array
     public :: logspace
     ! - Array allocation
     ! allocatable array can directly assign, like x = y even if x
-    ! is not allocated, and x's shape and bounds will be same
+    ! is not allocated, and the shape and bounds will be same
     ! as thos of y
     ! - Array fast allocation using constant
     ! b = [(0., integer :: i = 1,5)]

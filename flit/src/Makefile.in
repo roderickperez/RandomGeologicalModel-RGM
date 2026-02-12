@@ -12,12 +12,12 @@ intelroot =
 mklroot = 
 mpiroot = 
 
-base_inc = -I.
+base_inc = -I. -I$(moddir)
 
 # Linker flags
 # Removed MKL, added standard math and threading libs
 # Manually pointing to WSL2 runtime libs if .so symlinks are missing
-base_lflags = -lstdc++ -lm -fopenmp /usr/lib/x86_64-linux-gnu/liblapack.so.3 /usr/lib/x86_64-linux-gnu/libblas.so.3
+base_lflags = -lstdc++ -lm -fopenmp /usr/lib/x86_64-linux-gnu/liblapack.so.3 /usr/lib/x86_64-linux-gnu/libblas.so.3 -lcufftw -lcufft
 
 # Fortran flags
 # -cpp: Enable preprocessing

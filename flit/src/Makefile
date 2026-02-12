@@ -64,6 +64,8 @@ object_hdbscan = \
 	external_hdbscan.o
 
 object_libflit = \
+	mpi_f08.o \
+	fftw_stub.o \
 	module_error.o \
 	module_string.o \
 	module_constants.o \
