@@ -47,10 +47,12 @@ module libflit_array_operation
         module procedure :: adjust_2d_dcomplex
         module procedure :: adjust_3d_dcomplex
         module procedure :: adjust_4d_dcomplex
+#if 0
         module procedure :: adjust_1d_logical
         module procedure :: adjust_2d_logical
         module procedure :: adjust_3d_logical
         module procedure :: adjust_4d_logical
+#endif
     end interface adjust
 
     ! Convert a n-dimensional 1-sized array to a scalar
@@ -75,14 +77,16 @@ module libflit_array_operation
         module procedure :: as_scalar_2d_dcomplex
         module procedure :: as_scalar_3d_dcomplex
         module procedure :: as_scalar_4d_dcomplex
+#if 0
         module procedure :: as_scalar_1d_logical
         module procedure :: as_scalar_2d_logical
         module procedure :: as_scalar_3d_logical
         module procedure :: as_scalar_4d_logical
+#endif
     end interface as_scalar
 
     ! Crop an array by range in-place
-    ! After cropping, the array's lower and upper bounds may change.
+    ! After cropping, the array lower and upper bounds may change.
     ! This is in constrast to functions crop, where the lower bound of
     ! the new array is always 1.
     interface crop_array
@@ -102,10 +106,12 @@ module libflit_array_operation
         module procedure :: crop_array_2d_complex
         module procedure :: crop_array_3d_complex
         module procedure :: crop_array_4d_complex
+#if 0
         module procedure :: crop_array_1d_logical
         module procedure :: crop_array_2d_logical
         module procedure :: crop_array_3d_logical
         module procedure :: crop_array_4d_logical
+#endif
     end interface crop_array
 
     ! Crop an array by range
@@ -126,10 +132,12 @@ module libflit_array_operation
         module procedure :: crop_2d_complex
         module procedure :: crop_3d_complex
         module procedure :: crop_4d_complex
+#if 0
         module procedure :: crop_1d_logical
         module procedure :: crop_2d_logical
         module procedure :: crop_3d_logical
         module procedure :: crop_4d_logical
+#endif
     end interface crop
 
     ! Cross product of 1D vectors
@@ -166,9 +174,11 @@ module libflit_array_operation
         module procedure :: flatten_2d_dcomplex
         module procedure :: flatten_3d_dcomplex
         module procedure :: flatten_4d_dcomplex
+#if 0
         module procedure :: flatten_2d_logical
         module procedure :: flatten_3d_logical
         module procedure :: flatten_4d_logical
+#endif
     end interface flatten
 
     ! Flip array along one or several axes
@@ -188,9 +198,11 @@ module libflit_array_operation
         module procedure :: flip_1d_dcomplex
         module procedure :: flip_2d_dcomplex
         module procedure :: flip_3d_dcomplex
+#if 0
         module procedure :: flip_1d_logical
         module procedure :: flip_2d_logical
         module procedure :: flip_3d_logical
+#endif
     end interface flip
 
     ! If-then-else ternary operation, including scalar and array
@@ -201,7 +213,9 @@ module libflit_array_operation
         module procedure :: ifelse_double
         module procedure :: ifelse_complex
         module procedure :: ifelse_dcomplex
+#if 0
         module procedure :: ifelse_logical
+#endif
         module procedure :: ifelse_1d_int
         module procedure :: ifelse_2d_int
         module procedure :: ifelse_3d_int
@@ -222,10 +236,12 @@ module libflit_array_operation
         module procedure :: ifelse_2d_dcomplex
         module procedure :: ifelse_3d_dcomplex
         module procedure :: ifelse_4d_dcomplex
+#if 0
         module procedure :: ifelse_1d_logical
         module procedure :: ifelse_2d_logical
         module procedure :: ifelse_3d_logical
         module procedure :: ifelse_4d_logical
+#endif
         module procedure :: ifelse_string
     end interface ifelse
 
@@ -247,10 +263,10 @@ module libflit_array_operation
         module procedure :: mask_2d_complex
         module procedure :: mask_3d_complex
         module procedure :: mask_4d_complex
-        module procedure :: mask_1d_dcomplex
-        module procedure :: mask_2d_dcomplex
-        module procedure :: mask_3d_dcomplex
-        module procedure :: mask_4d_dcomplex
+!        module procedure :: mask_1d_dcomplex
+!        module procedure :: mask_2d_dcomplex
+!        module procedure :: mask_3d_dcomplex
+!        module procedure :: mask_4d_dcomplex
     end interface mask
 
     ! Pad an array
@@ -270,9 +286,11 @@ module libflit_array_operation
         module procedure :: pad_array_1d_dcomplex
         module procedure :: pad_array_2d_dcomplex
         module procedure :: pad_array_3d_dcomplex
+#if 0
         module procedure :: pad_array_1d_logical
         module procedure :: pad_array_2d_logical
         module procedure :: pad_array_3d_logical
+#endif
         module procedure :: pad_array_1d_string
         module procedure :: pad_array_2d_string
         module procedure :: pad_array_3d_string
@@ -295,9 +313,11 @@ module libflit_array_operation
         module procedure :: pad_1d_dcomplex
         module procedure :: pad_2d_dcomplex
         module procedure :: pad_3d_dcomplex
+#if 0
         module procedure :: pad_1d_logical
         module procedure :: pad_2d_logical
         module procedure :: pad_3d_logical
+#endif
         module procedure :: pad_1d_string
         module procedure :: pad_2d_string
         module procedure :: pad_3d_string
@@ -310,13 +330,17 @@ module libflit_array_operation
         module procedure :: permute_array_3d_double
         module procedure :: permute_array_3d_complex
         module procedure :: permute_array_3d_dcomplex
+#if 0
         module procedure :: permute_array_3d_logical
+#endif
         module procedure :: permute_array_4d_int
         module procedure :: permute_array_4d_float
         module procedure :: permute_array_4d_double
         module procedure :: permute_array_4d_complex
         module procedure :: permute_array_4d_dcomplex
+#if 0
         module procedure :: permute_array_4d_logical
+#endif
     end interface permute_array
 
     ! Permute an array out-of-place
@@ -326,13 +350,17 @@ module libflit_array_operation
         module procedure :: permute_3d_double
         module procedure :: permute_3d_complex
         module procedure :: permute_3d_dcomplex
+#if 0
         module procedure :: permute_3d_logical
+#endif
         module procedure :: permute_4d_int
         module procedure :: permute_4d_float
         module procedure :: permute_4d_double
         module procedure :: permute_4d_complex
         module procedure :: permute_4d_dcomplex
+#if 0
         module procedure :: permute_4d_logical
+#endif
     end interface permute
 
     ! Linearly scale array to a specific range
@@ -364,9 +392,11 @@ module libflit_array_operation
         module procedure :: rot90_1d_dcomplex
         module procedure :: rot90_2d_dcomplex
         module procedure :: rot90_3d_dcomplex
+#if 0
         module procedure :: rot90_1d_logical
         module procedure :: rot90_2d_logical
         module procedure :: rot90_3d_logical
+#endif
     end interface rot90
 
     ! Slice an (n - 1)-dimensional array from an n-dimensional array
@@ -398,7 +428,9 @@ module libflit_array_operation
         module procedure :: any_in_1d_double
         module procedure :: any_in_1d_complex
         module procedure :: any_in_1d_dcomplex
+#if 0
         module procedure :: any_in_1d_logical
+#endif
         module procedure :: any_in_1d_string
     end interface any_in
 
@@ -409,7 +441,9 @@ module libflit_array_operation
         module procedure :: all_in_1d_double
         module procedure :: all_in_1d_complex
         module procedure :: all_in_1d_dcomplex
+#if 0
         module procedure :: all_in_1d_logical
+#endif
         module procedure :: all_in_1d_string
     end interface all_in
 
@@ -419,7 +453,9 @@ module libflit_array_operation
         module procedure :: remove_any_in_1d_double
         module procedure :: remove_any_in_1d_complex
         module procedure :: remove_any_in_1d_dcomplex
+#if 0
         module procedure :: remove_any_in_1d_logical
+#endif
         module procedure :: remove_any_in_1d_string
     end interface remove_any_in
 
@@ -517,9 +553,9 @@ contains
 #define TT double complex
 #include "template_adjust.f90"
 
-#define T logical
-#define TT logical
-#include "template_adjust.f90"
+! #define T logical
+! #define TT logical
+! #include "template_adjust.f90"
 
     !================================================================
     ! As scalar
@@ -543,9 +579,9 @@ contains
 #define TT double complex
 #include "template_as_scalar.f90"
 
-#define T logical
-#define TT logical
-#include "template_as_scalar.f90"
+! #define T logical
+! #define TT logical
+! #include "template_as_scalar.f90"
 
     !================================================================
     ! Cross product
@@ -591,9 +627,9 @@ contains
 #define TT double complex
 #include "template_crop.f90"
 
-#define T logical
-#define TT logical
-#include "template_crop.f90"
+! #define T logical
+! #define TT logical
+! #include "template_crop.f90"
 
     !================================================================
     ! Flatten array
@@ -617,9 +653,9 @@ contains
 #define TT double complex
 #include "template_flatten.f90"
 
-#define T logical
-#define TT logical
-#include "template_flatten.f90"
+! #define T logical
+! #define TT logical
+! #include "template_flatten.f90"
 
     !================================================================
     ! Flip array
@@ -643,9 +679,9 @@ contains
 #define TT double complex
 #include "template_flip.f90"
 
-#define T logical
-#define TT logical
-#include "template_flip.f90"
+! #define T logical
+! #define TT logical
+! #include "template_flip.f90"
 
     !================================================================
     ! If-then-else ternary operation for scalar and array
@@ -669,9 +705,9 @@ contains
 #define TT double complex
 #include "template_ifelse.f90"
 
-#define T logical
-#define TT logical
-#include "template_ifelse.f90"
+! #define T logical
+! #define TT logical
+! #include "template_ifelse.f90"
 
     ! String requires special routine
     function ifelse_string(condition, a, b) result(c)
@@ -710,9 +746,9 @@ contains
 #define TT double complex
 #include "template_mask.f90"
 
-#define T logical
-#define TT logical
-#include "template_mask.f90"
+! #define T logical
+! #define TT logical
+! #include "template_mask.f90"
 
     !================================================================
     ! Pad array
@@ -746,11 +782,11 @@ contains
 #define DEFAULT_VALUE dcmplx(0.0d0, 0.0d0)
 #include "template_pad.f90"
 
-#define T logical
-#define TT logical
-#define TTT logical
-#define DEFAULT_VALUE .false.
-#include "template_pad.f90"
+! #define T logical
+! #define TT logical
+! #define TTT logical
+! #define DEFAULT_VALUE .false.
+! #include "template_pad.f90"
 
 #define T string
 #define TT character(len=*)
@@ -785,10 +821,10 @@ contains
 #define TTT double complex
 #include "template_set.f90"
 
-#define T logical
-#define TT logical
-#define TTT logical
-#include "template_set.f90"
+! #define T logical
+! #define TT logical
+! #define TTT logical
+! #include "template_set.f90"
 
 #define T string
 #define TT character(len=*)

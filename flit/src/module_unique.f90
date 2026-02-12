@@ -69,10 +69,12 @@ contains
 #define TTT double complex
 #include "template_unique.f90"
 
+#if 0
 #define T logical
 #define TT logical
 #define TTT logical
 #include "template_unique.f90"
+#endif
 
 #define T string
 #define TT character(len=*)

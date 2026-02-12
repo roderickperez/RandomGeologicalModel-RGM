@@ -17,7 +17,7 @@
 !
 
 
-include'mkl_dfti.f90'
+include "mkl_dfti.f90"
 !include "mkl_trig_transforms.f90"
 
 module libflit_transform
@@ -36,8 +36,8 @@ module libflit_transform
     ! If using FFTW, then the following module is required:
     ! use iso_c_binding
 
-#include 'fftw3.f'
-#include 'fftw3_mkl.f'
+#include "fftw3.f"
+#include "fftw3_mkl.f"
 
     private
 

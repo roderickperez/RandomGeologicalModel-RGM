@@ -4,7 +4,7 @@
 
 fc = gfortran
 cc = gcc
-cxx = g++
+cxx = g++-13
 ll = ar
 
 # No special root directories needed for standard system install

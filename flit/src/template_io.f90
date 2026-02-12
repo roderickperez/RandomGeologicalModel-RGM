@@ -483,8 +483,7 @@ subroutine stdout_array_1d_(w, append, ascii, format)
             end if
         else
             open (unit=output_unit, &
-                form='formatted', action='write', access='stream', &
-                status='replace')
+                form='formatted', action='write', access='stream')
         end if
         do i = 1, size(w)
             write (output_unit, '('//tidy(output_format)//')') w(i)
@@ -500,8 +499,7 @@ subroutine stdout_array_1d_(w, append, ascii, format)
             end if
         else
             open (unit=output_unit, &
-                form='unformatted', action='write', access='stream', &
-                status='replace')
+                form='unformatted', action='write', access='stream')
         end if
         write (output_unit) w
 
@@ -622,8 +620,7 @@ subroutine stdout_array_2d_(w, transp, append, ascii, format)
             end if
         else
             open (unit=output_unit, &
-                form='formatted', action='write', access='stream', &
-                status='replace')
+                form='formatted', action='write', access='stream')
         end if
         if (present(transp)) then
             if (transp) then
@@ -648,8 +645,7 @@ subroutine stdout_array_2d_(w, transp, append, ascii, format)
             end if
         else
             open (unit=output_unit, &
-                form='unformatted', action='write', access='stream', &
-                status='replace')
+                form='unformatted', action='write', access='stream')
         end if
         if (present(transp)) then
             if (transp) then
@@ -707,8 +703,7 @@ subroutine stdout_array_3d_(w, store, append)
         end if
     else
         open (unit=output_unit, &
-            form='unformatted', action='write', access='stream', &
-            status='replace')
+            form='unformatted', action='write', access='stream')
     end if
     if (present(store)) then
         write (output_unit) permute(w, store)
@@ -762,8 +757,7 @@ subroutine stdout_array_4d_(w, store, append)
         end if
     else
         open (unit=output_unit, &
-            form='unformatted', action='write', access='stream', &
-            status='replace')
+            form='unformatted', action='write', access='stream')
     end if
     if (present(store)) then
         write (output_unit) permute(w, store)

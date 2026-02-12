@@ -66,52 +66,52 @@ module libflit_random
 
         ! random number following Cauchy distribution
         subroutine cauchy_rand_int(w, nw, a, b) bind(c, name='cauchy_rand')
-            use iso_c_binding, only: c_int, c_int
-            real(kind=c_int), dimension(*) :: w
+            use iso_c_binding, only: c_int, c_float
+            real(kind=c_float), dimension(*) :: w
             integer(kind=c_int), value :: nw
-            real(kind=c_int), value :: a, b
+            real(kind=c_float), value :: a, b
         end subroutine cauchy_rand_int
 
         ! random number following Cauchy distribution, given seed
         subroutine cauchy_rand_seed_int(w, nw, a, b, seed) bind(c, name='cauchy_rand_seed')
-            use iso_c_binding, only: c_int, c_int
-            real(kind=c_int), dimension(*) :: w
+            use iso_c_binding, only: c_int, c_float
+            real(kind=c_float), dimension(*) :: w
             integer(kind=c_int), value :: nw
-            real(kind=c_int), value :: a, b
+            real(kind=c_float), value :: a, b
             integer(kind=c_int), value :: seed
         end subroutine cauchy_rand_seed_int
 
         ! random number following Poisson distribution
         subroutine poisson_rand_int(w, nw, mean) bind(c, name='poisson_rand')
-            use iso_c_binding, only: c_int, c_int
-            real(kind=c_int), dimension(*) :: w
+            use iso_c_binding, only: c_int, c_float
+            real(kind=c_float), dimension(*) :: w
             integer(kind=c_int), value :: nw
-            real(kind=c_int), value :: mean
+            real(kind=c_float), value :: mean
         end subroutine poisson_rand_int
 
         ! random number following Poisson distribution, given seed
         subroutine poisson_rand_seed_int(w, nw, mean, seed) bind(c, name='poisson_rand_seed')
-            use iso_c_binding, only: c_int, c_int
-            real(kind=c_int), dimension(*) :: w
+            use iso_c_binding, only: c_int, c_float
+            real(kind=c_float), dimension(*) :: w
             integer(kind=c_int), value :: nw
-            real(kind=c_int), value :: mean
+            real(kind=c_float), value :: mean
             integer(kind=c_int), value :: seed
         end subroutine poisson_rand_seed_int
 
         ! random number following exponential distribution
         subroutine exponential_rand_int(w, nw, lambda) bind(c, name='exponential_rand')
-            use iso_c_binding, only: c_int, c_int
-            real(kind=c_int), dimension(*) :: w
+            use iso_c_binding, only: c_int, c_float
+            real(kind=c_float), dimension(*) :: w
             integer(kind=c_int), value :: nw
-            real(kind=c_int), value :: lambda
+            real(kind=c_float), value :: lambda
         end subroutine exponential_rand_int
 
         ! random number following exponential distribution, given seed
         subroutine exponential_rand_seed_int(w, nw, lambda, seed) bind(c, name='exponential_rand_seed')
-            use iso_c_binding, only: c_int, c_int
-            real(kind=c_int), dimension(*) :: w
+            use iso_c_binding, only: c_int, c_float
+            real(kind=c_float), dimension(*) :: w
             integer(kind=c_int), value :: nw
-            real(kind=c_int), value :: lambda
+            real(kind=c_float), value :: lambda
             integer(kind=c_int), value :: seed
         end subroutine exponential_rand_seed_int
 
@@ -349,19 +349,31 @@ contains
 #define TT integer
 #define TTT real
 #define nTT nint
+#define RZERO 0.0
+#define RONE 1.0
 #include "template_random.f90"
+#undef RZERO
+#undef RONE
 
 #define T float
 #define TT real
 #define TTT real
 #define nTT
+#define RZERO 0.0
+#define RONE 1.0
 #include "template_random.f90"
+#undef RZERO
+#undef RONE
 
 #define T double
 #define TT double precision
 #define TTT double precision
 #define nTT dble
+#define RZERO 0.0d0
+#define RONE 1.0d0
 #include "template_random.f90"
+#undef RZERO
+#undef RONE
 
     !
     !> Generate a random ordering of the integers 1 ... n.

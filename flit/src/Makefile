@@ -149,7 +149,8 @@ $(objdir)/%.o : $(srcdir)/%.cpp
 	$(cxx) -o $@ -c $(cxxflags) $(inc) $<
 
 $(objdir)/%.o : $(srcdir)/%.f90
-	$(fc) -o $@ -c $(fflags) $(inc) $<
+	gcc -E -P -C -x c $(inc) $< > $(objdir)/$*.f90
+	$(fc) -o $@ -c $(fflags) $(inc) $(objdir)/$*.f90
 
 $(objdir)/%.o : $(srcdir)/../third_party/pcg_random/%.cpp
 	$(cxx) -o $@ -c $(cxxflags) $(inc) $<
@@ -161,7 +162,8 @@ $(objdir)/%.o : $(srcdir)/../third_party/iir/%.cpp
 	$(cxx) -o $@ -c $(cxxflags) $(inc) $<
 
 $(objdir)/%.o : $(srcdir)/../third_party/filesystem/%.f90
-	$(fc) -o $@ -c $(fflags) $(inc) $<
+	gcc -E -P -C -x c $(inc) $< > $(objdir)/$*.f90
+	$(fc) -o $@ -c $(fflags) $(inc) $(objdir)/$*.f90
 
 $(objdir)/%.o : $(srcdir)/../third_party/filesystem/%.c
 	$(cc) -o $@ -c $(cflags) $(inc) $<

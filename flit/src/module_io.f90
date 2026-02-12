@@ -146,8 +146,6 @@ module libflit_io
     end interface stdout_array
 
     integer :: ioerr
-    logical :: file_exist
-    integer :: file_size
 
     interface load
         module procedure :: load_array_1d_float

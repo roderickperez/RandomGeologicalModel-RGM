@@ -73,43 +73,43 @@ function rand_(dist, seed, range, mu, sigma, a, b, mean, lambda) result(r)
     if (present(range)) then
         value_range = range
     else
-        value_range = [0.0, 1.0]
+        value_range = [RZERO, RONE]
     end if
 
     if (present(mu)) then
         normal_mu = mu
     else
-        normal_mu = 0.0
+        normal_mu = RZERO
     end if
 
     if (present(sigma)) then
         normal_sigma = sigma
     else
-        normal_sigma = 1.0
+        normal_sigma = RONE
     end if
 
     if (present(a)) then
         cauchy_a = a
     else
-        cauchy_a = 0.0
+        cauchy_a = RZERO
     end if
 
     if (present(b)) then
         cauchy_b = b
     else
-        cauchy_b = 1.0
+        cauchy_b = RONE
     end if
 
     if (present(mean)) then
         poisson_mean = mean
     else
-        poisson_mean = 0.0
+        poisson_mean = RZERO
     end if
 
     if (present(lambda)) then
         exponential_lambda = lambda
     else
-        exponential_lambda = 1.0
+        exponential_lambda = RONE
     end if
 
     if (present(seed)) then
@@ -212,7 +212,7 @@ function rand_array_1d_(n1, dist, seed, range, mu, sigma, a, b, mean, lambda, sp
     if (present(spacing)) then
         random_spacing = spacing
     else
-        random_spacing = 0.0
+        random_spacing = RZERO
     end if
 
     if (present(seed)) then
@@ -223,8 +223,8 @@ function rand_array_1d_(n1, dist, seed, range, mu, sigma, a, b, mean, lambda, sp
 
     n = n1
     if (random_spacing > 0) then
-        empty_space = value_range(2) - value_range(1) - (n - 1.0)*random_spacing
-        call assert(empty_space >= 0.0, ' <rand_array_1d> Error: The expected minimum spacing is too big. ')
+        empty_space = value_range(2) - value_range(1) - (n - RONE)*random_spacing
+        call assert(empty_space >= RZERO, ' <rand_array_1d> Error: The expected minimum spacing is too big. ')
     end if
 
     allocate (random_value(1:n))
@@ -233,9 +233,9 @@ function rand_array_1d_(n1, dist, seed, range, mu, sigma, a, b, mean, lambda, sp
         select case (distribution)
             case ('uniform')
                 if (random_spacing > 0) then
-                    call uniform_rand_seed_(random_value, n, 0.0, 1.0, rs)
+                    call uniform_rand_seed_(random_value, n, RZERO, RONE, rs)
                     call sort_index(random_value, index)
-                    random_value = empty_space*random_value + value_range(1) + random_spacing*linspace(0.0, n - 1.0, n)
+                    random_value = empty_space*random_value + value_range(1) + random_spacing*linspace(RZERO, n - RONE, n)
                     random_value = random_value(index)
                 else
                     call uniform_rand_seed_(random_value, n, value_range(1), value_range(2), rs)
@@ -253,9 +253,9 @@ function rand_array_1d_(n1, dist, seed, range, mu, sigma, a, b, mean, lambda, sp
         select case (distribution)
             case ('uniform')
                 if (random_spacing > 0) then
-                    call uniform_rand_(random_value, n, 0.0, 1.0)
+                    call uniform_rand_(random_value, n, RZERO, RONE)
                     call sort_index(random_value, index)
-                    random_value = empty_space*random_value + value_range(1) + random_spacing*linspace(0.0, n - 1.0, n)
+                    random_value = empty_space*random_value + value_range(1) + random_spacing*linspace(RZERO, n - RONE, n)
                     random_value = random_value(index)
                 else
                     call uniform_rand_(random_value, n, value_range(1), value_range(2))

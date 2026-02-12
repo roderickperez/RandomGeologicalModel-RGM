@@ -73,7 +73,7 @@ subroutine pad_array_1d_(w, pad, method, const)
     end if
 
     do i = 1, size(pad_method)
-        call assert(any(pad_method(i) == ['edge', 'symm', 'const']), &
+        call assert(any(pad_method(i) == ['edge ', 'symm ', 'const']), &
             ' <pad_1d> Error: Padding method must be one of edge, symm, const.')
     end do
 
@@ -165,7 +165,7 @@ subroutine pad_array_2d_(w, pad, method, const)
     end if
 
     do i = 1, size(pad_method)
-        call assert(any(pad_method(i) == ['edge', 'symm', 'const']), &
+        call assert(any(pad_method(i) == ['edge ', 'symm ', 'const']), &
             ' <pad_2d> Error: Padding method must be one of edge, symm, const.')
     end do
 
@@ -331,7 +331,7 @@ subroutine pad_array_3d_(w, pad, method, const)
     end if
 
     do i = 1, size(pad_method)
-        call assert(any(pad_method(i) == ['edge', 'symm', 'const']), &
+        call assert(any(pad_method(i) == ['edge ', 'symm ', 'const']), &
             ' <pad_3d> Error: Padding method must be one of edge, symm, const.')
     end do
 

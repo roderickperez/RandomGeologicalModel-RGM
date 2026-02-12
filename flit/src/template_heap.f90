@@ -24,7 +24,7 @@
 
 #define heap_     CONCAT(heap, T)
 
-#include '../third_party/heap/mheap.f90'
+#include "../third_party/heap/mheap.f90"
 
 #undef T
 #undef TT
